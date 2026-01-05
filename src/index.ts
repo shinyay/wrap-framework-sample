@@ -1,6 +1,20 @@
 import { createApp } from './app';
 
-const PORT = process.env.PORT || 3000;
+const DEFAULT_PORT = 3000;
+const rawPort = process.env.PORT;
+const PORT = (() => {
+  if (!rawPort) {
+    return DEFAULT_PORT;
+  }
+  const parsedPort = parseInt(rawPort, 10);
+  if (Number.isNaN(parsedPort) || parsedPort < 1 || parsedPort > 65535) {
+    console.warn(
+      `Invalid PORT value "${rawPort}". Falling back to default port ${DEFAULT_PORT}.`,
+    );
+    return DEFAULT_PORT;
+  }
+  return parsedPort;
+})();
 
 const app = createApp();
 
@@ -14,6 +28,7 @@ process.on('SIGTERM', () => {
   console.log('SIGTERM signal received: closing HTTP server');
   server.close(() => {
     console.log('HTTP server closed');
+    process.exit(0);
   });
 });
 
