@@ -1,4 +1,8 @@
-# wrap-framwork-sample
+# WRAP-Framework-workshop
+
+⚠️ main branch is intentionally kept blank for workshops.
+All hands-on work should be done on `workshop/*` branches.
+
 
 This repository is a practical sample of using **WRAP** (W: Write / R: Refine / A: Atomic / P: Pair) to bootstrap and grow a project from an **almost-empty repository** by delegating work to **GitHub Copilot coding agent** through Issues and pull requests.
 
